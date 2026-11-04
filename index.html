@@ -128,8 +128,12 @@
       .sec-head p { color: var(--ink-soft); margin: 0; font-size: 15.5px; }
 
       /* ---------- products ---------- */
-      .prod-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-      @media (max-width: 860px) { .prod-grid { grid-template-columns: 1fr; } }
+      .prod-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+      @media (max-width: 1020px) { .prod-grid { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 560px) { .prod-grid { grid-template-columns: 1fr; } }
+      .breakdown { margin-top: 12px; font-size: 13.5px; color: var(--ink-soft); display: grid; gap: 4px; }
+      .breakdown div { display: flex; justify-content: space-between; gap: 12px; }
+      .breakdown strong { color: var(--ink); font-weight: 700; }
       .prod {
         background: var(--surface); border: 1px solid var(--line); border-radius: 18px;
         padding: 24px; display: flex; flex-direction: column; gap: 6px; position: relative;
@@ -294,9 +298,9 @@
           </div>
         </div>
         <div class="rate-strip">
-          <span class="big">今日参考汇率&nbsp; 1 NZD ≈ <span class="num">¥3.74</span></span>
-          <span><small>参考价按此汇率折算；汇率每天都在动，最终金额以下单时店主确认为准，确认后价格锁定、不再变动。</small></span>
-          <span><small>汇率快照：2026 年 11 月 4 日 · </small><a href="https://WISE.COM/gb/currency-converter/nzd-to-cny-rate?amount=5" target="_blank" rel="noopener">来源 Wise 中间价</a></span>
+          <span class="big">本店售价&nbsp; NZ$1 = <span class="num">¥6.00</span></span>
+          <span><small><strong style="color:#fff">这不是实时汇率。</strong>售价已包含代付损耗与代理服务费，明码标价：NZ$5 = ¥30、NZ$10 = ¥60、NZ$20 = ¥120，下单确认后价格锁定、不再另加费用。</small></span>
+          <span><small>成本参考：2026 年 11 月 4 日 Wise 中间价 1 NZD ≈ ¥3.74，仅用于拆解服务费，不是本店售价依据 · </small><a href="https://WISE.COM/gb/currency-converter/nzd-to-cny-rate?amount=5" target="_blank" rel="noopener">查看 Wise</a></span>
         </div>
       </div>
     </header>
@@ -310,31 +314,42 @@
           </div>
           <div class="prod-grid">
             <article class="prod">
+              <div class="amt num">NZ$5 <small>起充</small></div>
+              <div class="cny">售价 ¥30.00 <span class="approx">（NZ$5 × ¥6.00，含服务费）</span></div>
+              <p>最低起充档，适合保号续命、先小额试一单看看速度。</p>
+              <div class="meta"><span>直充 / 卡密</span><span>余额 365 天有效</span></div>
+              <button class="btn ghost" data-pick="5">就充这个</button>
+            </article>
+            <article class="prod">
               <div class="amt num">NZ$10 <small>入门</small></div>
-              <div class="cny">参考价 ¥37.40 <span class="approx">（NZ$10 × 3.74）</span></div>
-              <p>适合临时救急、保号续命，或者先小额试一单看看速度。</p>
+              <div class="cny">售价 ¥60.00 <span class="approx">（NZ$10 × ¥6.00，含服务费）</span></div>
+              <p>适合临时救急、小额备用，价格和 NZ$5 档同一公式，不玩小额加价。</p>
               <div class="meta"><span>直充 / 卡密</span><span>余额 365 天有效</span></div>
               <button class="btn ghost" data-pick="10">就充这个</button>
             </article>
             <article class="prod hot">
               <span class="tag">店主推荐</span>
               <div class="amt num">NZ$20 <small>常用</small></div>
-              <div class="cny">参考价 ¥74.80 <span class="approx">（NZ$20 × 3.74）</span></div>
+              <div class="cny">售价 ¥120.00 <span class="approx">（NZ$20 × ¥6.00，含服务费）</span></div>
               <p>刚好够买 Skinny 的 $17 四周套餐再留一点零头，日常充值选它最稳妥。</p>
               <div class="meta"><span>直充 / 卡密</span><span>余额 365 天有效</span></div>
               <button class="btn" data-pick="20">就充这个</button>
             </article>
             <article class="prod">
               <div class="amt num">NZ$50 <small>囤货</small></div>
-              <div class="cny">参考价 ¥187.00 <span class="approx">（NZ$50 × 3.74）</span></div>
+              <div class="cny">售价 ¥300.00 <span class="approx">（NZ$50 × ¥6.00，含服务费）</span></div>
               <p>一次充够两三个月，适合套餐自动续费党，省得每月惦记。</p>
               <div class="meta"><span>直充 / 卡密</span><span>余额 365 天有效</span></div>
               <button class="btn ghost" data-pick="50">就充这个</button>
             </article>
           </div>
+          <div class="method-note" style="background:var(--orange-soft)">
+            <i data-lucide="receipt-text"></i>
+            <p><strong>本店定价公式（推荐并已采用）：售价 = 纽币金额 × ¥6.00。</strong>拆开看 = 按成本参考价 ¥3.74/NZ$1 折算的话费成本 + ¥2.26/NZ$1 代理服务费。服务费已包含代付损耗、支付与换汇损耗和人工处理，不再另收。这一公式保证最低档 NZ$5 也卖 ¥30，任何金额都不低于 ¥6.00/NZ$1。<strong>请注意：¥6.00 不是实时汇率，不要拿它和银行/Wise 实时汇率直接比。</strong></p>
+          </div>
           <div class="method-note">
             <i data-lucide="sliders-horizontal"></i>
-            <p><strong>想要别的金额？</strong>Skinny 官方直充 NZ$5 起、任意金额都可以。在下方计算器里输入你想要的纽币金额即可，NZ$5、NZ$17、NZ$33 都没问题。</p>
+            <p><strong>想要别的金额？</strong>Skinny 官方直充 NZ$5 起、任意金额都可以，全部按同一公式 ¥6.00/NZ$1 计算。在下方计算器里输入你想要的纽币金额即可，NZ$17、NZ$33 都没问题。</p>
           </div>
         </div>
       </section>
@@ -343,20 +358,24 @@
         <div class="wrap">
           <div class="sec-head">
             <h2>先算价，再下单</h2>
-            <p>左边算参考价，右边把订单文字生成好，复制后粘贴发给店主微信就行，不用来回打字。</p>
+            <p>左边按本店售价公式算总价，右边把订单文字生成好，复制后粘贴发给店主微信（skinnyfan）就行，不用来回打字。</p>
           </div>
           <div class="order-grid">
             <div class="panel">
-              <h3><i data-lucide="calculator"></i>汇率计算器</h3>
-              <p class="sub">按今日参考汇率 1 NZD ≈ ¥3.74 折算，仅供估算。</p>
+              <h3><i data-lucide="calculator"></i>售价计算器</h3>
+              <p class="sub">公式：售价 = 纽币金额 × ¥6.00（含代理服务费）。这不是实时汇率。</p>
               <label class="f" for="calc-nzd">想充多少纽币（NZ$）</label>
               <input type="number" id="calc-nzd" min="5" step="1" value="20" inputmode="decimal" />
               <div class="err" id="calc-err"></div>
               <div class="calc-out">
-                <span class="lbl">参考价（人民币）</span>
-                <span class="val num" id="calc-cny">¥74.80</span>
+                <span class="lbl">售价（人民币，含服务费）</span>
+                <span class="val num" id="calc-cny">¥120.00</span>
               </div>
-              <p class="hint">Skinny 直充最低 NZ$5 起。参考价不含也不加任何隐藏项——最终金额由店主按下单时的汇率确认后锁定。</p>
+              <div class="breakdown" id="calc-breakdown">
+                <div><span>话费成本参考（× ¥3.74，2026-11-04 快照）</span><strong id="calc-cost">¥74.80</strong></div>
+                <div><span>代理服务费（× ¥2.26，含代付损耗）</span><strong id="calc-fee">¥45.20</strong></div>
+              </div>
+              <p class="hint">Skinny 直充最低 NZ$5 起，即最低售价 ¥30。成本参考价只用来拆解服务费、会随市场变动；本店售价按 ¥6.00/NZ$1 明码标价，下单确认后锁定，不再另加费用。</p>
             </div>
 
             <div class="panel">
@@ -369,9 +388,10 @@
               </div>
               <label class="f" for="ord-amt">充值金额（NZ$）</label>
               <select id="ord-amt">
-                <option value="10">NZ$10</option>
-                <option value="20" selected>NZ$20</option>
-                <option value="50">NZ$50</option>
+                <option value="5">NZ$5 — ¥30.00</option>
+                <option value="10">NZ$10 — ¥60.00</option>
+                <option value="20" selected>NZ$20 — ¥120.00</option>
+                <option value="50">NZ$50 — ¥300.00</option>
                 <option value="custom">其他金额（用左侧计算器的数字）</option>
               </select>
               <div id="phone-field">
@@ -404,7 +424,7 @@
             <div class="step">
               <div class="n num">2</div>
               <h3>确认金额</h3>
-              <p>店主按当时汇率报出人民币总价，你确认无误后再付款，价格当场锁定。</p>
+              <p>店主按本站公式（纽币金额 × ¥6.00，含服务费）确认人民币总价，你确认无误后再付款，价格当场锁定。</p>
             </div>
             <div class="step">
               <div class="n num">3</div>
@@ -456,8 +476,8 @@
                 <p>可以。孩子在新西兰留学、父母过去旅游、朋友的号码都能充，下单时填对方的 Skinny 号码就行。仅限 Skinny 网络的号码，其他运营商暂时充不了。</p>
               </details>
               <details class="faq">
-                <summary>价格为什么写着「参考价」？<i data-lucide="chevron-down"></i></summary>
-                <p>因为人民币金额是按纽币汇率折算的，汇率每天都在变。本站显示的是按下单日参考汇率算出的估算价；你发订单后，店主会报出确切总价，你确认了再付款，不会出现付完又加价的情况。</p>
+                <summary>价格是怎么算的？是实时汇率吗？<i data-lucide="chevron-down"></i></summary>
+                <p><strong>不是实时汇率。</strong>本店售价公式是：售价 = 纽币金额 × ¥6.00，例如 NZ$5 = ¥30、NZ$10 = ¥60、NZ$20 = ¥120。拆开看，其中 ¥3.74/NZ$1 是 2026 年 11 月 4 日的成本参考价，另 ¥2.26/NZ$1 是代理服务费，已包含代付损耗、支付与换汇损耗和人工处理。价格明码标价、下单确认后锁定，不会付完又加价，也不会再另收其他费用。</p>
               </details>
               <details class="faq">
                 <summary>可以退款吗？<i data-lucide="chevron-down"></i></summary>
@@ -477,10 +497,8 @@
             </div>
             <div class="wx-box">
               <div class="lbl"><i data-lucide="message-circle"></i>店主微信号</div>
-              <!-- 店主上线前：把下面这一行的微信号换成你自己的 -->
-              <div class="wx-id" id="wx-id">YOUR_WECHAT_ID</div>
+              <div class="wx-id" id="wx-id">skinnyfan</div>
               <button class="btn" id="copy-wx"><i data-lucide="copy"></i>复制微信号</button>
-              <div class="todo">提示：此处为示例占位，正式上线前请替换成店主自己的微信号。</div>
             </div>
           </div>
         </div>
@@ -490,7 +508,7 @@
     <footer>
       <div class="wrap">
         <p><strong>纽村小铺</strong>是一家个人代充小店，与 Skinny、Spark New Zealand 没有隶属或合作关系；「Skinny」为其注册商标，本站仅用于说明充值对象。</p>
-        <p>汇率参考价来源：Wise 纽币兑人民币中间价，2026 年 11 月 4 日快照（1 NZD ≈ ¥3.74），实际成交价以下单时确认为准。短信指令与余额有效期来自 Skinny / Spark 官方帮助页。</p>
+        <p>本店售价：纽币金额 × ¥6.00，含代理服务费，不是实时汇率。其中成本参考价为 Wise 纽币兑人民币中间价 2026 年 11 月 4 日快照（1 NZD ≈ ¥3.74），仅用于拆解服务费；实际成交价按下单确认锁定。短信指令与余额有效期来自 Skinny / Spark 官方帮助页。</p>
         <p>本站为纯静态页面，不收集、不上传你的任何信息；订单只在你点「复制」后进入你的剪贴板。</p>
       </div>
     </footer>
@@ -499,7 +517,9 @@
 
 <script>
 (function () {
-var RATE = 3.74; // 2026-11-04 参考汇率快照：1 NZD ≈ ¥3.74（Wise 中间价）
+var RATE = 6.00; // 本店售价：¥6.00 / NZ$1，含代理服务费，不是实时汇率
+var REF_RATE = 3.74; // 成本参考：2026-11-04 Wise 中间价快照，仅用于拆解服务费
+var FEE_RATE = 2.26; // 代理服务费：¥2.26 / NZ$1，含代付损耗（RATE - REF_RATE）
 var MIN_NZD = 5;
 
 function fmt(n) {
@@ -538,6 +558,8 @@ navigator.clipboard.writeText(text).then(done, fallback);
 var calcNzd = document.getElementById("calc-nzd");
 var calcCny = document.getElementById("calc-cny");
 var calcErr = document.getElementById("calc-err");
+var calcCost = document.getElementById("calc-cost");
+var calcFee = document.getElementById("calc-fee");
 function calcAmount() {
 var v = parseFloat(calcNzd.value);
 return isNaN(v)? NaN: v;
@@ -546,12 +568,18 @@ function runCalc() {
 var v = calcAmount();
 if (isNaN(v) || v <= 0) {
 calcCny.textContent = "—";
+if (calcCost) calcCost.textContent = "—";
+if (calcFee) calcFee.textContent = "—";
 calcErr.textContent = "请输入想充值的纽币金额。";
 } else if (v < MIN_NZD) {
 calcCny.textContent = fmt(round2(v * RATE));
-calcErr.textContent = "Skinny 直充最低 NZ$5 起，这个金额充不了哦。";
+if (calcCost) calcCost.textContent = fmt(round2(v * REF_RATE));
+if (calcFee) calcFee.textContent = fmt(round2(v * FEE_RATE));
+calcErr.textContent = "Skinny 直充最低 NZ$5 起（最低售价 ¥30），这个金额充不了哦。";
 } else {
 calcCny.textContent = fmt(round2(v * RATE));
+if (calcCost) calcCost.textContent = fmt(round2(v * REF_RATE));
+if (calcFee) calcFee.textContent = fmt(round2(v * FEE_RATE));
 calcErr.textContent = "";
 }
 renderOrder();
@@ -608,7 +636,7 @@ phoneErr.textContent = "这个号码格式有点不对：新西兰号码一般 0
 phoneErr.textContent = "";
 }
 }
-lines.push("参考价：" + (amtOk? fmt(round2(amt * RATE)) + "（按 1 NZD ≈ ¥3.74 估算）": "—"));
+lines.push("售价：" + (amtOk? fmt(round2(amt * RATE)) + "（按 ¥6.00/NZ$1 计，含代理服务费，非实时汇率）": "—"));
 lines.push("请店主确认总价，谢谢！");
 orderText.textContent = lines.join("\n");
 }
@@ -640,10 +668,6 @@ toast("已选 NZ$" + v + "，填上号码就能生成订单");
 /* ---------- 复制微信号 ---------- */
 document.getElementById("copy-wx").addEventListener("click", function () {
 var id = document.getElementById("wx-id").textContent.trim();
-if (id === "YOUR_WECHAT_ID") {
-toast("店主微信号还没填上，正式上线前会替换成真实微信号");
-return;
-}
 copyText(id, "微信号已复制，去微信添加好友吧");
 });
 
